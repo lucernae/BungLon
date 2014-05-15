@@ -1,0 +1,133 @@
+<MainMenuScreen>:
+    name: 'main menu'
+    Label:
+        text: 'main menu'
+        center: self.center
+
+
+<GameScreen>:
+    name: 'game screen'
+    score_text: score_text
+    red_slider: red_slider
+    green_slider: green_slider
+    blue_slider: blue_slider
+    color_text: color_text
+    color_answer: color_answer
+    color_guess: color_guess
+    effect_text: effect_text
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            size_hint_y: None
+            height: 40
+            Label:
+                id: score_text
+                text: 'score : 100'
+        GridLayout:
+            cols: 2
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'answer'
+                    font_size: 30
+                    size_hint_x: 1
+                    size_hint_y: 1
+                    canvas.before:
+                        Color:
+                            id: color_answer
+                            rgb: 1,0,0
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                Label:
+                    text: 'guess'
+                    font_size: 30
+                    size_hint_x: 1
+                    size_hint_y: 1
+                    canvas.before:
+                        Color:
+                            id: color_guess
+                            rgb: 0,1,0
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    id: color_text
+                    text: 'color'
+                    font_size: 30
+                    size_hint_y: 0.1
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: '40dp'
+                    BoxLayout:
+                        padding: '5dp'
+                        BoxLayout:
+                            Slider:
+                                id: red_slider
+                                min: 0
+                                max: 255
+                                value: 255
+                                size_hint_x: None
+                                width: self.parent.width-10
+                                orientation: 'horizontal'
+                        Widget:
+                            size_hint_x: None
+                            width: self.height
+                            canvas:
+                                Color:
+                                    rgb: 1,0,0
+                                Rectangle:
+                                    size: self.size
+                                    pos: self.pos
+                    BoxLayout:
+                        padding: '5dp'
+                        BoxLayout:
+                            Slider:
+                                id: green_slider
+                                min: 0
+                                max: 255
+                                value: 255
+                                size_hint_x: None
+                                width: self.parent.width-10
+                                orientation: 'horizontal'
+                        Widget:
+                            size_hint_x: None
+                            width: self.height
+                            canvas:
+                                Color:
+                                    rgb: 0,1,0
+                                Rectangle:
+                                    size: self.size
+                                    pos: self.pos
+                    BoxLayout:
+                        padding: '5dp'
+                        BoxLayout:
+                            Slider:
+                                id: blue_slider
+                                min: 0
+                                max: 255
+                                value: 255
+                                size_hint_x: None
+                                width: self.parent.width-10
+                                orientation: 'horizontal'
+                        Widget:
+                            size_hint_x: None
+                            width: self.height
+                            canvas:
+                                Color:
+                                    rgb: 0,0,1
+                                Rectangle:
+                                    size: self.size
+                                    pos: self.pos
+                    BoxLayout:
+                        padding: '5dp'
+                        Button:
+                            text: 'Guess'
+    Label:
+        id: effect_text
+        text: 'Effect'
+        color: 1,1,1,0
+        size_hint: (None, None)
+        center: root.center
