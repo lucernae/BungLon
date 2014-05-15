@@ -1,8 +1,19 @@
 <MainMenuScreen>:
+    main_menu_label: main_menu_label
     name: 'main menu'
-    Label:
-        text: 'main menu'
-        center: self.center
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: main_menu_label
+            text: 'main menu'
+            font_size: 30
+            center: self.center
+        Button:
+            text: 'play normal'
+            on_press: root.play_normal(self)
+        Button:
+            text: 'play question blind mode'
+            on_press: root.play_blind(self)
 
 
 <GameScreen>:
@@ -15,6 +26,10 @@
     color_answer: color_answer
     color_guess: color_guess
     effect_text: effect_text
+    red_preview: red_preview
+    green_preview: green_preview
+    blue_preview: blue_preview
+    guess_button: guess_button
     BoxLayout:
         orientation: 'vertical'
         BoxLayout:
@@ -35,7 +50,7 @@
                     size_hint_y: 1
                     canvas.before:
                         Color:
-                            rgb: 1,0,0
+                            rgb: 0,0,0
                         Rectangle:
                             size: self.size
                             pos: self.pos
@@ -47,7 +62,7 @@
                     size_hint_y: 1
                     canvas.before:
                         Color:
-                            rgb: 0,1,0
+                            rgb: 0,0,0
                         Rectangle:
                             size: self.size
                             pos: self.pos
@@ -72,7 +87,11 @@
                                 size_hint_x: None
                                 width: self.parent.width-10
                                 orientation: 'horizontal'
+                                on_touch_move: root.preview_color(self)
+                                on_touch_down: root.preview_color(self)
+                                on_touch_up: root.preview_color(self)
                         Widget:
+                            id: red_preview
                             size_hint_x: None
                             width: self.height
                             canvas:
@@ -92,7 +111,11 @@
                                 size_hint_x: None
                                 width: self.parent.width-10
                                 orientation: 'horizontal'
+                                on_touch_move: root.preview_color(self)
+                                on_touch_down: root.preview_color(self)
+                                on_touch_up: root.preview_color(self)
                         Widget:
+                            id: green_preview
                             size_hint_x: None
                             width: self.height
                             canvas:
@@ -112,7 +135,11 @@
                                 size_hint_x: None
                                 width: self.parent.width-10
                                 orientation: 'horizontal'
+                                on_touch_move: root.preview_color(self)
+                                on_touch_down: root.preview_color(self)
+                                on_touch_up: root.preview_color(self)
                         Widget:
+                            id: blue_preview
                             size_hint_x: None
                             width: self.height
                             canvas:
@@ -124,7 +151,11 @@
                     BoxLayout:
                         padding: '5dp'
                         Button:
+                            id: guess_button
                             text: 'Guess'
+                        Button:
+                            text: 'Exit to main menu'
+                            on_press: root.back_to_main(self)
     Label:
         id: effect_text
         text: 'Effect'
